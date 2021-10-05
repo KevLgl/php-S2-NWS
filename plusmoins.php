@@ -1,8 +1,8 @@
 <?php
 
-function game(){
-     $randomNumber = rand(1,3);
-     $compteurVie  = 3;
+function game($min, $max, $nbrvie){
+     $randomNumber = rand($min,$max);
+     $compteurVie  = $nbrvie;
 
 
     $typedNumber = readline('Entre de nouveau un nombre, et tentez de decouvrir le nombre mystere:');
@@ -30,7 +30,7 @@ function game(){
                 $replay = readline('Voulez vous rejouer ?(oui - o / non - n):');
             }
             if($replay === "o" OR $replay ==="oui"){
-                game();
+                game($min, $max, $nbrvie);
             }else if($replay === "n" OR $replay ==="non"){
                 die;
             }
@@ -42,10 +42,9 @@ function game(){
         $replay = readline('Voulez vous rejouer ?(oui - o / non - n):');
     }
         if ($replay === "o" or $replay === "oui") {
-            game();
+            game($min, $max, $nbrvie);
         } else if ($replay === "n" or $replay === "non") {
             die;
         }
-
 }
-game();
+game($argv[1],$argv[2],$argv[3]);
